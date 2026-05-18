@@ -293,7 +293,12 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-lg);
-      background: var(--blue-pale);
+      background: #000;
+    }
+    .hero-img-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
     }
     .hero-img-wrap img {
       width: 100%;
@@ -1068,15 +1073,22 @@
       </div>
       <div class="hero-visual">
         <div class="hero-img-wrap">
-          <img
-            src="images/work-05.jpg"
-            alt="에어컨 분해세척 완료 - 깨끗해진 송풍팬과 내부"
-            loading="eager"
-          />
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster="images/work-05.jpg"
+            aria-label="핸디드홈케어 에어컨 분해세척 작업 영상"
+          >
+            <source src="images/hero-video.mp4" type="video/mp4" />
+            <img src="images/work-05.jpg" alt="에어컨 분해세척 완료" />
+          </video>
         </div>
         <div class="hero-img-badge">
-          <strong>✨ 세척 완료 후 상태</strong>
-          <span>깨끗해진 송풍팬과 내부</span>
+          <strong>🎬 실제 작업 영상</strong>
+          <span>핸디드홈케어 분해세척 현장</span>
         </div>
       </div>
     </div>
