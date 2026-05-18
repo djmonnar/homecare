@@ -684,6 +684,31 @@
     .lightbox-arrow:hover { background: rgba(255,255,255,.28); }
 
     /* ════════════════════════════════
+       REVIEWS
+    ════════════════════════════════ */
+    .review-slider-wrap {
+      position: relative;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .review-slider { position: relative; }
+    .review-slide {
+      display: none;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .review-slide.active { display: block; }
+    .review-slide img { width: 100%; height: auto; display: block; }
+    .review-slider-wrap .gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); }
+    .review-slider-wrap .prev { left: -20px; }
+    .review-slider-wrap .next { right: -20px; }
+    @media (max-width: 480px) {
+      .review-slider-wrap .prev { left: 6px; }
+      .review-slider-wrap .next { right: 6px; }
+    }
+
+    /* ════════════════════════════════
        PRICING
     ════════════════════════════════ */
     #pricing { background: #fff; }
@@ -1032,6 +1057,7 @@
         <a href="#about">소개</a>
         <a href="#services">서비스</a>
         <a href="#gallery">작업사진</a>
+        <a href="#reviews">고객후기</a>
         <a href="#pricing">가격안내</a>
         <a href="#contact">문의</a>
       </nav>
@@ -1286,6 +1312,41 @@
       </div>
       <div class="gallery-dots" id="gallery-dots" aria-label="슬라이드 페이지"></div>
       <div class="gallery-thumbs" id="gallery-thumbs" aria-label="썸네일 목록"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     REVIEWS
+══════════════════════════════ -->
+<section id="reviews" class="section" aria-labelledby="reviews-title" style="background:var(--gray-100);">
+  <div class="container">
+    <div class="badge">실제 고객 후기</div>
+    <h2 class="section-title" id="reviews-title">고객님들의 <span class="highlight">진짜 후기</span></h2>
+    <p class="section-sub">네이버 플레이스 실제 리뷰입니다</p>
+    <div class="review-slider-wrap fade-up">
+      <div class="review-slider" id="review-slider">
+        <div class="review-slide active">
+          <img src="images/review-01.jpg" alt="실제 고객 후기 1 - wns****님 별점 5점" loading="lazy" />
+        </div>
+        <div class="review-slide">
+          <img src="images/review-02.jpg" alt="실제 고객 후기 2 - wns****님" loading="lazy" />
+        </div>
+        <div class="review-slide">
+          <img src="images/review-03.jpg" alt="실제 고객 후기 3 - 쌀밥왕자님" loading="lazy" />
+        </div>
+        <div class="review-slide">
+          <img src="images/review-04.jpg" alt="실제 고객 후기 4 - jhh****님" loading="lazy" />
+        </div>
+      </div>
+      <button class="gallery-arrow prev" id="review-prev" aria-label="이전 후기">‹</button>
+      <button class="gallery-arrow next" id="review-next" aria-label="다음 후기">›</button>
+      <div class="gallery-dots" id="review-dots"></div>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <a href="https://m.place.naver.com/place/1766841927/home" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:13px;padding:10px 22px;">
+        🗺️ 네이버 플레이스에서 더 보기
+      </a>
     </div>
   </div>
 </section>
@@ -1810,6 +1871,44 @@ const PHOTOS = [
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') lbMove(-1);
     if (e.key === 'ArrowRight') lbMove(1);
+  });
+})();
+
+/* =========================================================
+   Review slider
+========================================================= */
+(function ReviewSlider() {
+  const slides = document.querySelectorAll('.review-slide');
+  const dotsWrap = document.getElementById('review-dots');
+  const prev = document.getElementById('review-prev');
+  const next = document.getElementById('review-next');
+  let cur = 0;
+  let touchStartX = 0;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `후기 ${i + 1}`);
+    d.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(d);
+  });
+
+  function go(idx) {
+    slides[cur].classList.remove('active');
+    dotsWrap.children[cur].classList.remove('active');
+    cur = (idx + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dotsWrap.children[cur].classList.add('active');
+  }
+
+  prev.addEventListener('click', () => go(cur - 1));
+  next.addEventListener('click', () => go(cur + 1));
+
+  const slider = document.getElementById('review-slider');
+  slider.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  slider.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) go(dx < 0 ? cur + 1 : cur - 1);
   });
 })();
 
