@@ -985,10 +985,10 @@
     }
     .mobile-cta-btns {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
     }
-    .mobile-cta-btns .btn { padding: 14px 0; font-size: 15px; border-radius: var(--radius-md); }
+    .mobile-cta-btns .btn { padding: 13px 0; font-size: 13px; border-radius: var(--radius-md); }
     @media (max-width: 767px) {
       #mobile-cta { display: block; }
       body { padding-bottom: 90px; }
@@ -1575,8 +1575,12 @@
 ══════════════════════════════ -->
 <div id="mobile-cta" aria-label="빠른 문의">
   <div class="mobile-cta-btns">
-    <a href="tel:PHONE_NUMBER" class="btn btn-primary" id="mob-phone-btn">📞 전화 문의</a>
-    <a href="KAKAO_LINK" class="btn btn-kakao" id="mob-kakao-btn" target="_blank" rel="noopener">💬 카톡 상담</a>
+    <a href="tel:PHONE_NUMBER" class="btn btn-primary" id="mob-phone-btn">📞 전화</a>
+    <a href="https://m.place.naver.com/place/1766841927/home" class="btn" id="mob-naver-btn" target="_blank" rel="noopener" style="background:#03C75A;color:#fff;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>
+      네이버
+    </a>
+    <a href="KAKAO_LINK" class="btn btn-kakao" id="mob-kakao-btn" target="_blank" rel="noopener">💬 카톡</a>
   </div>
 </div>
 
