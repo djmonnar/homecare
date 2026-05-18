@@ -922,29 +922,49 @@
       transition: color var(--transition);
     }
     .footer-col a:hover { color: #fff; }
+    .footer-contact-btns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .footer-contact-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px 8px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 700;
+      transition: all var(--transition);
+      text-align: center;
+    }
+    .footer-contact-btn-icon { font-size: 22px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+    .footer-contact-btn-label { font-size: 12px; }
+    .footer-contact-btn--phone {
+      background: var(--blue-main);
+      color: #fff;
+    }
+    .footer-contact-btn--phone:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .footer-contact-btn--naver {
+      background: #03C75A;
+      color: #fff;
+    }
+    .footer-contact-btn--naver:hover { background: #02a84c; transform: translateY(-2px); }
+    .footer-contact-btn--kakao {
+      background: #FEE500;
+      color: #3C1E1E;
+    }
+    .footer-contact-btn--kakao:hover { background: #f5d800; transform: translateY(-2px); }
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      padding-top: 20px;
       font-size: 12px;
+      text-align: center;
+      color: rgba(255,255,255,.35);
     }
-    .footer-sns {
-      display: flex; gap: 10px;
-    }
-    .footer-sns a {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.1);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-      color: rgba(255,255,255,.7);
-      transition: all var(--transition);
-    }
-    .footer-sns a:hover { background: var(--blue-main); color: #fff; }
 
     @media (max-width: 767px) {
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
@@ -1504,7 +1524,7 @@
       <div class="footer-brand">
         <div class="logo-wrap">
           <div class="logo-icon" style="background:rgba(255,255,255,.1);">
-            <img src="images/work-05.jpg" alt="" aria-hidden="true" />
+            <img src="images/logo.png" alt="" aria-hidden="true" />
           </div>
           <div class="logo-text">
             <span class="logo-name">핸디드홈케어</span>
@@ -1528,13 +1548,24 @@
         <span>📍 진주 지역</span>
       </div>
     </div>
+    <div class="footer-contact-btns">
+      <a href="tel:PHONE_NUMBER" class="footer-contact-btn footer-contact-btn--phone" id="footer-btn-phone">
+        <span class="footer-contact-btn-icon">📞</span>
+        <span class="footer-contact-btn-label">전화 문의</span>
+      </a>
+      <a href="https://m.place.naver.com/place/1766841927/home" class="footer-contact-btn footer-contact-btn--naver" id="footer-btn-naver" target="_blank" rel="noopener">
+        <span class="footer-contact-btn-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>
+        </span>
+        <span class="footer-contact-btn-label">네이버 플레이스</span>
+      </a>
+      <a href="http://pf.kakao.com/_lmhxfn" class="footer-contact-btn footer-contact-btn--kakao" id="footer-btn-kakao" target="_blank" rel="noopener">
+        <span class="footer-contact-btn-icon">💬</span>
+        <span class="footer-contact-btn-label">카톡 채널</span>
+      </a>
+    </div>
     <div class="footer-bottom">
-      <span>© 2024 핸디드홈케어. All rights reserved.</span>
-      <div class="footer-sns">
-        <a href="KAKAO_LINK" id="footer-sns-kakao" target="_blank" rel="noopener" aria-label="카카오톡">💬</a>
-        <a href="INSTAGRAM_LINK" id="footer-sns-insta" target="_blank" rel="noopener" aria-label="인스타그램">📷</a>
-        <a href="NAVER_PLACE_LINK" id="footer-sns-naver" target="_blank" rel="noopener" aria-label="네이버">🗺️</a>
-      </div>
+      <span>© 2025 핸디드홈케어. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -1571,8 +1602,8 @@
 ========================================================= */
 const CONTACT = {
   phone:        '010-0000-0000',      // ← 전화번호 입력
-  kakao:        'https://open.kakao.com/o/XXXXXXX',  // ← 카카오 오픈채팅 또는 채널 링크
-  naverPlace:   'https://place.naver.com/XXXXXXX',   // ← 네이버 플레이스 링크
+  kakao:        'http://pf.kakao.com/_lmhxfn',
+  naverPlace:   'https://m.place.naver.com/place/1766841927/home',
   instagram:    'https://instagram.com/XXXXXXX',     // ← 인스타그램 링크
 };
 /* =========================================================
