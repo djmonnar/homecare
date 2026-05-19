@@ -1034,6 +1034,40 @@
     ════════════════════════════════ */
     .wave-divider { display: block; width: 100%; line-height: 0; }
     .wave-divider svg { display: block; }
+
+    /* ════════════════════════════════
+       PC LAYOUT  (≥ 768px)
+    ════════════════════════════════ */
+    @media (min-width: 768px) {
+      /* ── Trust ── */
+      .trust-grid { grid-template-columns: repeat(4, 1fr); }
+
+      /* ── Services (1 card → centered) ── */
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card-wide { max-width: 720px; }
+
+      /* ── Gallery ── */
+      .gallery-main { max-height: 600px; }
+
+      /* ── Reviews: 2×2 grid, hide slider controls ── */
+      .review-slider-wrap { max-width: 900px; }
+      .review-slider {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        position: static;
+      }
+      .review-slide { display: block !important; }
+      .review-slider-wrap .gallery-arrow,
+      #review-dots { display: none !important; }
+
+      /* ── Pricing ── */
+      .price-img-wrap { max-width: 680px; }
+      .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+
+      /* ── Hero stats row ── */
+      .hero-stats { gap: 40px; }
+    }
   </style>
 </head>
 <body>
